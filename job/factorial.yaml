@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: factorial5
+spec:
+ template: 
+  metadata:
+   name: factorials6
+  spec:
+   containers:
+    - name: factorial5
+      image: python:3.6
+      command: ["python", "-c", "import math; print(math.factorial(5))"]
+   restartPolicy: Never

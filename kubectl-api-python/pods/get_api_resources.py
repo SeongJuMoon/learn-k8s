@@ -1,0 +1,20 @@
+from __future__ import print_function
+import time
+import kubernetes.client
+from kubernetes.client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: BearerToken
+configuration = kubernetes.client.Configuration()
+configuration.api_key['authorization'] = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tcHo3anYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjY3ZTg2OWZjLTNlM2UtMTFlOS05MDljLTA4MDAyNzE1Zjg0MiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.Z-SjD8RzyJB6CLpkNnXlW2ABl5oQggx0yoMxW9dpFqVJYUr--6cOterp-HsC2hxI1tiFoXQoVxPrx75cyejGPdGlwW8_FhvZc2yuc0JTE803-ukPPjCALyXHFQJCFwXBsOm2Pc3SCHTVnw7_6O_gN7jttI4rnVSoaJGkx2DM7PYxwPzDBdg5pw0Bhp8TJFgmnxkd1qiYq2Y73YVdNlRPPOxKG9Yx4vZPMr6qQdXwTCjv5P7dnq32-Y8S7pbdluBPwSs4ZlJk9UJksGFovhmqkmtY2UkODeC9tKBUTLkZ1f4ebf5FEDi3fB80kE5kako3r-bkdMJdfF4WtX7Ww0IZjw'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = kubernetes.client.AdmissionregistrationV1beta1Api(kubernetes.client.ApiClient(configuration))
+
+try: 
+    api_response = api_instance.get_api_resources()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdmissionregistrationV1beta1Api->get_api_resources: %s\n" % e)

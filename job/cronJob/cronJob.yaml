@@ -1,0 +1,22 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata: 
+  name: stretch
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+   spec:
+    template:
+     metadata:
+       labels:
+         name: stretch
+
+   spec:
+    containers:
+    - name: stretch
+      image: python
+      args:
+      - python
+      - -c
+      - from datetime import datetime; print('[{}] Stretch'.format(datetime.now()))
+      restartPolicy: OnFailure
